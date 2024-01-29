@@ -5,7 +5,7 @@ import { Avatar, Dropdown, Layout } from 'antd';
 
 // import Notifications from '@/components/Notification';
 
-import { SettingOutlined, LogoutOutlined } from '@ant-design/icons';
+import { SettingOutlined, LogoutOutlined, AppstoreOutlined } from '@ant-design/icons';
 
 import { checkImage } from '@/request';
 
@@ -19,6 +19,7 @@ import useLanguage from '@/locale/useLanguage';
 import SelectLanguage from '@/components/SelectLanguage';
 
 import UpgradeButton from './UpgradeButton';
+import AppsButton from './AppsButton';
 
 export default function HeaderContent() {
   const currentAdmin = useSelector(selectCurrentAdmin);
@@ -135,6 +136,8 @@ export default function HeaderContent() {
         </Avatar>
         {/* </Badge> */}
       </Dropdown>
+
+      <AppsButton />
 
       <UpgradeButton />
 

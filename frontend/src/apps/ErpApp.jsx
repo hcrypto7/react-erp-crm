@@ -8,6 +8,7 @@ import { Layout } from 'antd';
 import { useAppContext } from '@/context/appContext';
 
 import Navigation from '@/apps/Navigation/NavigationContainer';
+import ExpensesNav from '@/apps/Navigation/ExpensesNav';
 import HeaderContent from '@/apps/Header/HeaderContainer';
 
 import { settingsAction } from '@/redux/settings/actions';
@@ -22,8 +23,9 @@ import storePersist from '@/redux/storePersist';
 export default function ErpCrmApp() {
   const { Content } = Layout;
 
-  const { state: stateApp } = useAppContext();
-  const { isNavMenuClose } = stateApp;
+  const { state: stateApp, appContextAction } = useAppContext();
+  const { app } = appContextAction;
+  const { isNavMenuClose, currentApp } = stateApp;
 
   const { isMobile } = useResponsive();
 
@@ -46,7 +48,7 @@ export default function ErpCrmApp() {
 
   return (
     <Layout hasSider>
-      <Navigation />
+      {currentApp === 'default' ? <Navigation /> : <ExpensesNav />}
 
       {isMobile ? (
         <Layout style={{ marginLeft: 0 }}>
